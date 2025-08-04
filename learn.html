@@ -1,4 +1,4 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -72,7 +72,7 @@
       gap: 15px;
     }
 
-    input {
+    input, select {
       padding: 12px;
       border-radius: 5px;
       border: none;
@@ -135,6 +135,9 @@
       <input type="text" id="studentName" placeholder="Student Name" required>
       <input type="text" id="className" placeholder="Class" required>
       <input type="text" id="group" placeholder="Group" required readonly>
+      <select id="subject" required>
+        <option value="">-- Select Subject --</option>
+      </select>
       <input type="text" id="roll" placeholder="Roll Number" required>
       <input type="text" id="school" placeholder="School Name" required>
       <input type="text" id="guardian" placeholder="Guardian's Name" required>
@@ -152,7 +155,29 @@
     function scrollToForm(group) {
       document.getElementById('group').value = group;
       document.getElementById('formTitle').textContent = `Enrollment Form for ${group}`;
+      updateSubjectOptions(group);
       document.getElementById('formSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function updateSubjectOptions(group) {
+      const subjectSelect = document.getElementById('subject');
+      subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
+      let subjects = [];
+
+      if (group === 'Science') {
+        subjects = ['সাধারণ গণিত', 'ইংরেজি', 'বিজ্ঞান', 'বাংলা'];
+      } else if (group === 'Commerce') {
+        subjects = ['গণিত', 'হিসাববিজ্ঞান', 'বিজ্ঞান', 'বাংলা', 'ইংরেজি'];
+      } else if (group === 'Arts') {
+        subjects = ['বাংলা', 'ইংরেজি', 'গণিত', 'অর্থনীতি', 'বিজ্ঞান', 'পৌরনীতি'];
+      }
+
+      subjects.forEach(sub => {
+        const option = document.createElement('option');
+        option.value = sub;
+        option.textContent = sub;
+        subjectSelect.appendChild(option);
+      });
     }
 
     document.getElementById('enrollForm').addEventListener('submit', function(e) {
@@ -161,12 +186,13 @@
       const name = document.getElementById('studentName').value;
       const className = document.getElementById('className').value;
       const group = document.getElementById('group').value;
+      const subject = document.getElementById('subject').value;
       const roll = document.getElementById('roll').value;
       const school = document.getElementById('school').value;
       const guardian = document.getElementById('guardian').value;
       const whatsapp = document.getElementById('whatsapp').value;
 
-      const message = `Enrollment Request:%0AStudent Name: ${name}%0AClass: ${className}%0AGroup: ${group}%0ARoll: ${roll}%0ASchool: ${school}%0AGuardian: ${guardian}%0AWhatsApp: ${whatsapp}`;
+      const message = `Enrollment Request:%0AStudent Name: ${name}%0AClass: ${className}%0AGroup: ${group}%0ASubject: ${subject}%0ARoll: ${roll}%0ASchool: ${school}%0AGuardian: ${guardian}%0AWhatsApp: ${whatsapp}`;
 
       window.open(`https://wa.me/8801723276453?text=${message}`, '_blank');
     });

@@ -31,7 +31,12 @@
     </form>
   </div>
 
-  <script src="script.js"></script>
+<script>
+  document.getElementById('selectionForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    window.location.href = 'learn.html';
+  });
+</script>
 </body>
 </html><style>body {
   font-family: Arial, sans-serif;

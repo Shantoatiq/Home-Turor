@@ -1,0 +1,176 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Tutor - Enroll Form</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { font-family: Arial, sans-serif; scroll-behavior: smooth; }
+
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 2s ease forwards;
+      padding: 40px 20px;
+    }
+
+    h1 { font-size: 2.8rem; margin-bottom: 20px; }
+    p { font-size: 1.2rem; margin-bottom: 30px; max-width: 700px; }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .buttons button {
+      padding: 15px 30px;
+      font-size: 1rem;
+      background: #fff;
+      color: #4facfe;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .buttons button:hover {
+      background: #00f2fe;
+      color: #fff;
+    }
+
+    .form-section {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .form-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 500px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button[type="submit"] {
+      padding: 15px 30px;
+      font-size: 1rem;
+      background: #fff;
+      color: #667eea;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    button[type="submit"] svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    button[type="submit"]:hover {
+      background: #00f2fe;
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; }
+      .buttons { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Enroll in Your Desired Course</h1>
+    <p>Select your group and enroll now. Our professional tutors are ready to guide you to success.</p>
+    <div class="buttons">
+      <button onclick="scrollToForm('Science')">Enroll Science</button>
+      <button onclick="scrollToForm('Commerce')">Enroll Commerce</button>
+      <button onclick="scrollToForm('Arts')">Enroll Arts</button>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="form-section" id="formSection">
+    <h2 id="formTitle">Enrollment Form</h2>
+    <form id="enrollForm">
+      <input type="text" id="studentName" placeholder="Student Name" required>
+      <input type="text" id="className" placeholder="Class" required>
+      <input type="text" id="group" placeholder="Group" required readonly>
+      <input type="text" id="roll" placeholder="Roll Number" required>
+      <input type="text" id="school" placeholder="School Name" required>
+      <input type="text" id="guardian" placeholder="Guardian's Name" required>
+      <input type="tel" id="whatsapp" placeholder="WhatsApp Number" value="017XXXXXXXX" required>
+      <button type="submit">
+        <svg viewBox="0 0 32 32" fill="currentColor">
+          <path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.8 5.6 2.4 8L0 32l8.4-2.4C11.2 31.2 13.6 32 16 32c8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.6c-2.4 0-4.8-.8-6.8-2.4l-.4-.4-5.6 1.6 1.6-5.6-.4-.4C2.4 19.2 1.6 17.6 1.6 16 1.6 8.8 8 2.4 16 2.4s14.4 6.4 14.4 14.4S23.2 29.6 16 29.6zm8.4-10.8c-.4-.8-2-1.2-4-2-.8-.4-1.2-.4-1.6 0-.4.4-.8 1.2-1.2 1.6-.4.4-.8.4-1.2.4-2.8-.8-5.2-3.2-6-6-.4-.4 0-.8.4-1.2.4-.4.8-.8 1.2-1.2.4-.4.4-.8 0-1.6-.8-2-1.2-3.6-2-4-.4-.4-.8-.4-1.2-.4-.8 0-2 .4-2.8 1.2-1.2 1.2-1.6 2.4-1.2 4 .8 4 4.4 8 8.8 10 .8.4 1.6.4 2.4.4 1.2 0 2.4-.4 3.2-1.2.8-.4 1.2-.8 1.6-1.2s.4-.8 0-1.2z"/>
+        </svg>
+        Submit via WhatsApp
+      </button>
+    </form>
+  </section>
+
+  <script>
+    function scrollToForm(group) {
+      document.getElementById('group').value = group;
+      document.getElementById('formTitle').textContent = `Enrollment Form for ${group}`;
+      document.getElementById('formSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('enrollForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('studentName').value;
+      const className = document.getElementById('className').value;
+      const group = document.getElementById('group').value;
+      const roll = document.getElementById('roll').value;
+      const school = document.getElementById('school').value;
+      const guardian = document.getElementById('guardian').value;
+      const whatsapp = document.getElementById('whatsapp').value;
+
+      const message = `Enrollment Request:%0AStudent Name: ${name}%0AClass: ${className}%0AGroup: ${group}%0ARoll: ${roll}%0ASchool: ${school}%0AGuardian: ${guardian}%0AWhatsApp: ${whatsapp}`;
+
+      window.open(`https://wa.me/8801723276453?text=${message}`, '_blank');
+    });
+  </script>
+
+</body>
+</html>
